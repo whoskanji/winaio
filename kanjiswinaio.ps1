@@ -11,13 +11,12 @@ If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 }
 
 # GUI Specs
-Write-Host "Checking winget..."
 
 Try{
 	# Check if winget is already installed
 	$er = (invoke-expression "winget -v") 2>&1
 	if ($lastexitcode) {throw $er}
-	Write-Host "winget is already installed."
+	Write-Host "Kanji's AIO Windows 10 Tool"
 }
 Catch{
 	# winget is not installed. Install it from the Github release
@@ -48,7 +47,7 @@ $Form.ClientSize                 = New-Object System.Drawing.Point(1050,700)
 $Form.text                       = "All-In-One Windows Tool by Kanji"
 $Form.StartPosition              = "CenterScreen"
 $Form.TopMost                    = $false
-$Form.BackColor                  = [System.Drawing.ColorTranslator]::FromHtml("#303030")
+$Form.BackColor                  = [System.Drawing.ColorTranslator]::FromHtml("#212121")
 $Form.AutoScaleDimensions     = '192, 192'
 $Form.AutoScaleMode           = "Dpi"
 $Form.AutoSize                = $True
@@ -70,190 +69,46 @@ $Panel1.height                   = 639
 $Panel1.width                    = 219
 $Panel1.location                 = New-Object System.Drawing.Point(6,54)
 
-$Panel2                          = New-Object system.Windows.Forms.Panel
-$Panel2.height                   = 637
-$Panel2.width                    = 211
-$Panel2.location                 = New-Object System.Drawing.Point(239,53)
-
 $Label3                          = New-Object system.Windows.Forms.Label
 $Label3.text                     = "System Tools"
 $Label3.AutoSize                 = $true
 $Label3.width                    = 230
 $Label3.height                   = 25
-$Label3.location                 = New-Object System.Drawing.Point(230,12)
+$Label3.ForeColor                = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
+$Label3.location                 = New-Object System.Drawing.Point(15,12)
 $Label3.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
 
 $taskclearer                     = New-Object system.Windows.Forms.Button
 $taskclearer.text                = "Task Clearer"
 $taskclearer.width               = 204
 $taskclearer.height              = 75
-$taskclearer.location            = New-Object System.Drawing.Point(4,25)
+$taskclearer.ForeColor           = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
+$taskclearer.location            = New-Object System.Drawing.Point(4,105)
 $taskclearer.Font                = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
 
-$autologinon                     = New-Object system.Windows.Forms.Button
-$autologinon.text                = "Enable Auto-Login"
-$autologinon.width               = 204
-$autologinon.height              = 75
-$autologinon.location            = New-Object System.Drawing.Point(4,105)
-$autologinon.Font                = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
-
-$win10proacti                    = New-Object system.Windows.Forms.Button
-$win10proacti.text               = "Windows 10 Pro"
-$win10proacti.width              = 204
-$win10proacti.height             = 75
-$win10proacti.location           = New-Object System.Drawing.Point(4,25)
-$win10proacti.Font               = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
-
-$win10pronacti                   = New-Object system.Windows.Forms.Button
-$win10pronacti.text              = "Windows 10 Pro N"
-$win10pronacti.width             = 204
-$win10pronacti.height            = 75
-$win10pronacti.location          = New-Object System.Drawing.Point(4,105)
-$win10pronacti.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
-
-$win10homeacti                   = New-Object system.Windows.Forms.Button
-$win10homeacti.text              = "Windows 10 Home"
-$win10homeacti.width             = 204
-$win10homeacti.height            = 75
-$win10homeacti.location          = New-Object System.Drawing.Point(4,185)
-$win10homeacti.Font              = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
-
-$win10homenacti                  = New-Object system.Windows.Forms.Button
-$win10homenacti.text             = "Windows 10 Home N"
-$win10homenacti.width            = 204
-$win10homenacti.height           = 75
-$win10homenacti.location         = New-Object System.Drawing.Point(4,265)
-$win10homenacti.Font             = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
-
-$win10enterpriseacti             = New-Object system.Windows.Forms.Button
-$win10enterpriseacti.text        = "Windows 10 Ent."
-$win10enterpriseacti.width       = 204
-$win10enterpriseacti.height      = 75
-$win10enterpriseacti.location    = New-Object System.Drawing.Point(4,345)
-$win10enterpriseacti.Font        = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
-
-$win10enterprisenacti            = New-Object system.Windows.Forms.Button
-$win10enterprisenacti.text       = "Windows 10 Ent. N"
-$win10enterprisenacti.width      = 204
-$win10enterprisenacti.height     = 75
-$win10enterprisenacti.location   = New-Object System.Drawing.Point(4,425)
-$win10enterprisenacti.Font       = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
+$win10acti                       = New-Object system.Windows.Forms.Button
+$win10acti.text                  = "Activate Windows"
+$win10acti.width                 = 204
+$win10acti.height                = 75
+$win10acti.ForeColor             = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
+$win10acti.location              = New-Object System.Drawing.Point(4,25)
+$win10acti.Font                  = New-Object System.Drawing.Font('Microsoft Sans Serif',14)    
 
 $twitter                         = New-Object system.Windows.Forms.Button
 $twitter.text                    = "My Twitter"
 $twitter.width                   = 204
 $twitter.height                  = 75
+$twitter.ForeColor               = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
 $twitter.location                = New-Object System.Drawing.Point(4,535)
 $twitter.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
 
-$Label1                          = New-Object system.Windows.Forms.Label
-$Label1.text                     = "Activate"
-$Label1.AutoSize                 = $true
-$Label1.width                    = 230
-$Label1.height                   = 25
-$Label1.location                 = New-Object System.Drawing.Point(50,11)
-$Label1.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
-
-$Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label1,$Label4,$Panel3))
-$Panel1.controls.AddRange(@($win10proacti,$win10pronacti,$win10homeacti,$win10homenacti,$win10enterpriseacti,$win10enterprisenacti))
-$Panel2.controls.AddRange(@($taskclearer,$twitter,$Label5))
-
-$win10proacti.Add_Click({
-    Write-Host "Getting System Information..."
-    Write-Host "Activating Windows 10 Pro..."
-    Write-Host "Removing Existing key (if any).."
-    slmgr.vbs /upk
-    Start-Sleep -s 2
-    slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
-    Start-Sleep -s 3
-    slmgr /skms kms8.msguides.com
-    slmgr /ato
-    Start-Sleep -s 3
-    Write-Host "Activated Windows 10 Pro."
-})
-
-$win10pronacti.Add_Click({
-    Write-Host "Getting System Information..."
-    Write-Host "Activating Windows 10 Pro N..."
-    Write-Host "Removing Existing key (if any).."
-    slmgr.vbs /upk
-    Start-Sleep -s 2
-    slmgr /ipk MH37W-N47XK-V7XM9-C7227-GCQG9
-    Start-Sleep -s 3
-    slmgr /skms kms8.msguides.com
-    slmgr /ato
-    Start-Sleep -s 3
-    Write-Host "Activated Windows 10 Pro N."
-})
-
-$win10homeacti.Add_Click({
-    Write-Host "Getting System Information..."
-    Write-Host "Activating Windows 10 Home..."
-    Write-Host "Removing Existing key (if any).."
-    slmgr.vbs /upk
-    Start-Sleep -s 2
-    slmgr /ipk TX9XD-98N7V-6WMQ6-BX7FG-H8Q99
-    Start-Sleep -s 3
-    slmgr /skms kms8.msguides.com
-    slmgr /ato
-    Start-Sleep -s 3
-    Write-Host "Activated Windows Home."
-})
-
-$win10homenacti.Add_Click({
-    Write-Host "Getting System Information..."
-    Write-Host "Activating Windows 10 Home N..."
-    Write-Host "Removing Existing key (if any).."
-    slmgr.vbs /upk
-    Start-Sleep -s 2
-    slmgr /ipk 3KHY7-WNT83-DGQKR-F7HPR-844BM
-    Start-Sleep -s 3
-    slmgr /skms kms8.msguides.com
-    slmgr /ato
-    Start-Sleep -s 3
-    Write-Host "Activated Windows Home N."
-})
-
-$win10enterpriseacti.Add_Click({
-    Write-Host "Getting System Information..."
-    Write-Host "Activating Windows 10 Enterprise..."
-    Write-Host "Removing Existing key (if any).."
-    slmgr.vbs /upk
-    Start-Sleep -s 2
-    slmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43
-    Start-Sleep -s 3
-    slmgr /skms kms8.msguides.com
-    slmgr /ato
-    Start-Sleep -s 3
-    Write-Host "Activated Windows Enterprise."
-})
-
-$win10enterprisenacti.Add_Click({
-    Write-Host "Getting System Information..."
-    Write-Host "Activating Windows 10 Enterprise N..."
-    Write-Host "Removing Existing key (if any).."
-    slmgr.vbs /upk
-    Start-Sleep -s 2
-    slmgr /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
-    Start-Sleep -s 3
-    slmgr /skms kms8.msguides.com
-    slmgr /ato
-    Start-Sleep -s 3
-    Write-Host "Activated Windows Enterprise N."
-})
+$Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label4,$Panel3))
+$Panel1.controls.AddRange(@($win10acti,$taskclearer,$twitter,$Label5))
+#$Panel2.controls.AddRange(@($taskclearer,$win10acti,$twitter,$Label5))
 
 $taskclearer.Add_Click({
     Write-Host "Clearing Tasks..."
     Start-Sleep -s 3
-    taskkill /F /IM utweb.exe
-    taskkill /F /IM vgtray.exe
-    taskkill /F /IM OriginWebHelperService.exe
-    taskkill /F /IM iCloudServices.exe
-    taskkill /F /IM gjagent.exe
-    taskkill /F /IM AltServer.exe
-    taskkill /F /IM RuntimeBroker.exe
-    taskkill /F /IM QtWebEngineProcess.exe
-    taskkill /F /IM pia-service.exe
     taskkill /F /IM SearchApp.exe
     taskkill /F /IM YourPhone.exe
     schtasks /Delete /TN "Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem" /F
@@ -286,6 +141,96 @@ $taskclearer.Add_Click({
     schtasks /Delete /TN "Microsoft\XblGameSave\XblGameSaveTaskLogon" /F
     Start-Sleep -s 2
     Write-Host "Cleared Tasks."
+})
+
+$win10acti.Add_Click({
+    $P = (Get-ComputerInfo).OsName
+    Write-Host $P
+
+    if ($P = "Microsoft Windows 10 Pro") {
+        Write-Host "Activating Windows 10 Pro..."
+        Start-Sleep -s 3
+        Write-Host "Removing Existing key (if any).."
+        slmgr.vbs /upk
+        Start-Sleep -s 2
+        slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
+        Start-Sleep -s 3
+        slmgr /skms kms8.msguides.com
+        slmgr /ato
+        Start-Sleep -s 3
+        Write-Host "Activated Windows 10 Pro."
+    } else {
+    if ($P = "Microsoft Windows 10 Pro N") {
+        Write-Host "Activating Windows 10 Pro N..."
+        Start-Sleep -s 3
+        Write-Host "Removing Existing key (if any).."
+        slmgr.vbs /upk
+        Start-Sleep -s 2
+        slmgr /ipk MH37W-N47XK-V7XM9-C7227-GCQG9
+        Start-Sleep -s 3
+         slmgr /skms kms8.msguides.com
+         slmgr /ato
+        Start-Sleep -s 3
+        Write-Host "Activated Windows 10 Pro N."
+    } else {
+    if ($P = "Microsoft Windows 10 Home") {
+        Write-Host "Activating Windows 10 Home..."
+        Start-Sleep -s 3
+        Write-Host "Removing Existing key (if any).."
+         slmgr.vbs /upk
+        Start-Sleep -s 2
+        slmgr /ipk TX9XD-98N7V-6WMQ6-BX7FG-H8Q99
+        Start-Sleep -s 3
+        slmgr /skms kms8.msguides.com
+        slmgr /ato
+        Start-Sleep -s 3
+        Write-Host "Activated Windows Home."
+    } else {
+    if ($P = "Microsoft Windows 10 Home N") {
+        Write-Host "Activating Windows 10 Home N..."
+        Start-Sleep -s 3
+        Write-Host "Removing Existing key (if any).."
+        slmgr.vbs /upk
+        Start-Sleep -s 2
+        slmgr /ipk 3KHY7-WNT83-DGQKR-F7HPR-844BM
+        Start-Sleep -s 3
+        slmgr /skms kms8.msguides.com
+        slmgr /ato
+        Start-Sleep -s 3
+        Write-Host "Activated Windows Home N."
+    } else {
+    if ($P = "Microsoft Windows 10 Enterprise") {
+        Write-Host "Activating Windows 10 Enterprise..."
+        Start-Sleep -s 3
+        Write-Host "Removing Existing key (if any).."
+        slmgr.vbs /upk
+        Start-Sleep -s 2
+        slmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43
+        Start-Sleep -s 3
+        slmgr /skms kms8.msguides.com
+        slmgr /ato
+        Start-Sleep -s 3
+        Write-Host "Activated Windows Enterprise."
+    } else {
+    if ($P = "Microsoft Windows 10 Enterpise N") {
+        Write-Host "Activating Windows 10 Enterprise N..."
+        Start-Sleep -s 3
+        Write-Host "Removing Existing key (if any).."
+        slmgr.vbs /upk
+        Start-Sleep -s 2
+        slmgr /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
+        Start-Sleep -s 3
+        slmgr /skms kms8.msguides.com
+        slmgr /ato
+        Start-Sleep -s 3
+        Write-Host "Activated Windows Enterprise N."
+    }
+    }
+    }
+    }
+    }
+    }
+
 })
 
 $twitter.Add_Click({
