@@ -78,14 +78,6 @@ $Label3.ForeColor                = [System.Drawing.ColorTranslator]::FromHtml("#
 $Label3.location                 = New-Object System.Drawing.Point(15,12)
 $Label3.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
 
-$taskclearer                     = New-Object system.Windows.Forms.Button
-$taskclearer.text                = "Task Clearer"
-$taskclearer.width               = 204
-$taskclearer.height              = 75
-$taskclearer.ForeColor           = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
-$taskclearer.location            = New-Object System.Drawing.Point(4,105)
-$taskclearer.Font                = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
-
 $win10acti                       = New-Object system.Windows.Forms.Button
 $win10acti.text                  = "Activate Windows"
 $win10acti.width                 = 204
@@ -103,45 +95,8 @@ $twitter.location                = New-Object System.Drawing.Point(4,535)
 $twitter.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label4,$Panel3))
-$Panel1.controls.AddRange(@($win10acti,$taskclearer,$twitter,$Label5))
+$Panel1.controls.AddRange(@($win10acti,$twitter,$Label5))
 #$Panel2.controls.AddRange(@($taskclearer,$win10acti,$twitter,$Label5))
-
-$taskclearer.Add_Click({
-    Write-Host "Clearing Tasks..."
-    Start-Sleep -s 3
-    taskkill /F /IM SearchApp.exe
-    taskkill /F /IM YourPhone.exe
-    schtasks /Delete /TN "Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem" /F
-    schtasks /Delete /TN "Microsoft\Windows\Registry\RegIdleBackup" /F
-    schtasks /Delete /TN "Microsoft\Windows\RemoteAssistance\RemoteAssistanceTask" /F
-    schtasks /Delete /TN "Microsoft\Windows\RetailDemo\CleanupOfflineContent" /F
-    schtasks /Delete /TN "Microsoft\Windows\SettingSync\BackgroundUploadTask" /F
-    schtasks /Delete /TN "Microsoft\Windows\SettingSync\BackupTask" /F
-    schtasks /Delete /TN "Microsoft\Windows\SettingSync\NetworkStateChangeTask" /F
-    schtasks /Delete /TN "Microsoft\Windows\SettingSync\NetworkStateDeleteTask" /F
-    schtasks /Delete /TN "Microsoft\Windows\Setup\SetupCleanupTask" /F
-    schtasks /Delete /TN "Microsoft\Windows\Shell\FamilySafetyMonitor" /F
-    schtasks /Delete /TN "Microsoft\Windows\Shell\FamilySafetyMonitorToastTask" /F
-    schtasks /Delete /TN "Microsoft\Windows\Shell\FamilySafetyRefreshTask" /F
-    schtasks /Delete /TN "Microsoft\Windows\SpacePort\SpaceAgentTask" /F
-    schtasks /Delete /TN "Microsoft\Windows\SpacePort\SpaceManagerTask" /F
-    schtasks /Delete /TN "Microsoft\Windows\Speech\SpeechModelDownloadTask" /F
-    schtasks /Delete /TN "Microsoft\Windows\Storage Tiers Management\Storage Tiers Management Initialization" /F
-    schtasks /Delete /TN "Microsoft\Windows\Storage Tiers Management\Storage Tiers Optimization" /F
-    schtasks /Delete /TN "Microsoft\Windows\SystemRestore\SR" /F
-    schtasks /Delete /TN "Microsoft\Windows\User Profile Service\HiveUploadTask" /F
-    schtasks /Delete /TN "Microsoft\Windows\WDI\ResolutionHost" /F
-    schtasks /Delete /TN "Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance" /F
-    schtasks /Delete /TN "Microsoft\Windows\Windows Defender\Windows Defender Cleanup" /F
-    schtasks /Delete /TN "Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan" /F
-    schtasks /Delete /TN "Microsoft\Windows\Windows Defender\Windows Defender Verification" /F
-    schtasks /Delete /TN "Microsoft\Windows\Windows Error Reporting\QueueReporting" /F
-    schtasks /Delete /TN "Microsoft\Windows\WindowsUpdate\Automatic App Update" /F
-    schtasks /Delete /TN "Microsoft\XblGameSave\XblGameSaveTask" /F
-    schtasks /Delete /TN "Microsoft\XblGameSave\XblGameSaveTaskLogon" /F
-    Start-Sleep -s 2
-    Write-Host "Cleared Tasks."
-})
 
 $win10acti.Add_Click({
     $P = (Get-ComputerInfo).OsName
