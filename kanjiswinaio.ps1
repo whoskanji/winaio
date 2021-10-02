@@ -187,6 +187,20 @@ $win10acti.Add_Click({
         slmgr /ato
         Start-Sleep -s 3
         Write-Host "Activated Windows Enterprise N."
+    } else {
+    if ($P = "Microsoft Server 2019 Standard") {
+        Write-Host "Activating Windows Server 2019 Standard..."
+        Start-Sleep -s 3
+        Write-Host "Removing Existing key (if any).."
+        slmgr.vbs /upk
+        Start-Sleep -s 2
+        slmgr /ipk N69G4-B89J2-4G8F4-WWYCC-J464C
+        Start-Sleep -s 3
+        slmgr /skms kms8.msguides.com
+        slmgr /ato
+        Start-Sleep -s 3
+        Write-Host "Activated Windows Server 2019 Standard."
+    }
     }
     }
     }
