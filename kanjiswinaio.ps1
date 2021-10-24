@@ -78,13 +78,13 @@ $Label3.ForeColor                = [System.Drawing.ColorTranslator]::FromHtml("#
 $Label3.location                 = New-Object System.Drawing.Point(15,12)
 $Label3.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
 
-$win10acti                       = New-Object system.Windows.Forms.Button
-$win10acti.text                  = "Activate Windows"
-$win10acti.width                 = 204
-$win10acti.height                = 75
-$win10acti.ForeColor             = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
-$win10acti.location              = New-Object System.Drawing.Point(4,25)
-$win10acti.Font                  = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
+$winacti                       = New-Object system.Windows.Forms.Button
+$winacti.text                  = "Activate Windows"
+$winacti.width                 = 204
+$winacti.height                = 75
+$winacti.ForeColor             = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
+$winacti.location              = New-Object System.Drawing.Point(4,25)
+$winacti.Font                  = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
 
 $Debloat                         = New-Object system.Windows.Forms.Button
 $Debloat.text                    = "Debloat Windows"
@@ -103,10 +103,10 @@ $twitter.location                = New-Object System.Drawing.Point(4,535)
 $twitter.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label4,$Panel3))
-$Panel1.controls.AddRange(@($win10acti,$twitter,$Debloat,$Label5))
-#$Panel2.controls.AddRange(@($taskclearer,$win10acti,$twitter,$Label5))
+$Panel1.controls.AddRange(@($winacti,$twitter,$Debloat,$Label5))
+#$Panel2.controls.AddRange(@($taskclearer,$winacti,$twitter,$Label5))
 
-$win10acti.Add_Click({
+$winacti.Add_Click({
     $P = (Get-ComputerInfo).OsName
     Write-Host $P
 
@@ -200,6 +200,20 @@ $win10acti.Add_Click({
         slmgr /ato
         Start-Sleep -s 3
         Write-Host "Activated Windows Server 2019 Standard."
+    } else {
+    if ($P = "Microsoft Windows 11 Pro") {
+        Write-Host "Activating Windows 11 Pro..."
+        Start-Sleep -s 3
+        Write-Host "Removing Existing key (if any).."
+        slmgr.vbs /upk
+        Start-Sleep -s 2
+        slmgr /ipk Q269N-WFGWX-YVC9B-4J6C9-T83GX
+        Start-Sleep -s 3
+        slmgr /skms kms8.msguides.com
+        slmgr /ato
+        Start-Sleep -s 3
+        Write-Host "Activated Windows 11 Pro."
+    }
     }
     }
     }
