@@ -213,6 +213,20 @@ $winacti.Add_Click({
         slmgr /ato
         Start-Sleep -s 3
         Write-Host "Activated Windows 11 Pro."
+    } else {
+    if ($P = "Microsoft Windows 8.1 Pro") {
+        Write-Host "Activating Windows 8.1 Pro..."
+        Start-Sleep -s 3
+        Write-Host "Removing Existing key (if any).."
+        slmgr.vbs /upk
+        Start-Sleep -s 2
+        slmgr /ipk CR8NG-63KCR-X2MPD-G7M7P-GQ4DH
+        Start-Sleep -s 3
+        slmgr /skms kms8.msguides.com
+        slmgr /ato
+        Start-Sleep -s 3
+        Write-Host "Activated Windows 8.1 Pro."
+    }
     }
     }
     }
