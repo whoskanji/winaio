@@ -2,9 +2,6 @@ Add-Type -AssemblyName System.Windows.Forms
 [System.Windows.Forms.Application]::EnableVisualStyles()
 
 $ErrorActionPreference = 'SilentlyContinue'
-$wshell = New-Object -ComObject Wscript.Shell
-$Button = [System.Windows.MessageBoxButton]::YesNoCancel
-$ErrorIco = [System.Windows.MessageBoxImage]::Error
 If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]'Administrator')) {
 	Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
 	Exit
@@ -107,121 +104,31 @@ $Panel1.controls.AddRange(@($winacti,$Debloat,$twitter,$Label5))
 #$Panel2.controls.AddRange(@($taskclearer,$winacti,$Label5))
 
 $winacti.Add_Click({
+    Write-Host "Removing Existing key (if any).."
+    slmgr.vbs /upk
+    Start-Sleep -s 2
+    Write-Host "Getting OS..."
     $P = (Get-ComputerInfo).OsName
-    Write-Host $P
-
+    Write-Host Got $P
+    Start-Sleep -s 2
+    Write-Host Activating..
     if ($P = "Microsoft Windows 10 Pro") {
-        Write-Host "Activating Windows 10 Pro..."
-        Start-Sleep -s 3
-        Write-Host "Removing Existing key (if any).."
-        slmgr.vbs /upk
-        Start-Sleep -s 2
         slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
-        Start-Sleep -s 3
-        slmgr /skms kms8.msguides.com
-        slmgr /ato
-        Start-Sleep -s 3
-        Write-Host "Activated Windows 10 Pro."
-    } else {
-    if ($P = "Microsoft Windows 10 Pro N") {
-        Write-Host "Activating Windows 10 Pro N..."
-        Start-Sleep -s 3
-        Write-Host "Removing Existing key (if any).."
-        slmgr.vbs /upk
-        Start-Sleep -s 2
+    } elseif ($P = "Microsoft Windows 10 Pro N") {
         slmgr /ipk MH37W-N47XK-V7XM9-C7227-GCQG9
-        Start-Sleep -s 3
-         slmgr /skms kms8.msguides.com
-         slmgr /ato
-        Start-Sleep -s 3
-        Write-Host "Activated Windows 10 Pro N."
-    } else {
-    if ($P = "Microsoft Windows 10 Home") {
-        Write-Host "Activating Windows 10 Home..."
-        Start-Sleep -s 3
-        Write-Host "Removing Existing key (if any).."
-         slmgr.vbs /upk
-        Start-Sleep -s 2
+    } elseif ($P = "Microsoft Windows 10 Home") {
         slmgr /ipk TX9XD-98N7V-6WMQ6-BX7FG-H8Q99
-        Start-Sleep -s 3
-        slmgr /skms kms8.msguides.com
-        slmgr /ato
-        Start-Sleep -s 3
-        Write-Host "Activated Windows Home."
-    } else {
-    if ($P = "Microsoft Windows 10 Home N") {
-        Write-Host "Activating Windows 10 Home N..."
-        Start-Sleep -s 3
-        Write-Host "Removing Existing key (if any).."
-        slmgr.vbs /upk
-        Start-Sleep -s 2
+    } elseif ($P = "Microsoft Windows 10 Home N") {
         slmgr /ipk 3KHY7-WNT83-DGQKR-F7HPR-844BM
-        Start-Sleep -s 3
-        slmgr /skms kms8.msguides.com
-        slmgr /ato
-        Start-Sleep -s 3
-        Write-Host "Activated Windows Home N."
-    } else {
-    if ($P = "Microsoft Windows 10 Enterprise") {
-        Write-Host "Activating Windows 10 Enterprise..."
-        Start-Sleep -s 3
-        Write-Host "Removing Existing key (if any).."
-        slmgr.vbs /upk
-        Start-Sleep -s 2
+    } elseif ($P = "Microsoft Windows 10 Enterprise") {
         slmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43
-        Start-Sleep -s 3
-        slmgr /skms kms8.msguides.com
-        slmgr /ato
-        Start-Sleep -s 3
-        Write-Host "Activated Windows Enterprise."
-    } else {
-    if ($P = "Microsoft Windows 10 Enterpise N") {
-        Write-Host "Activating Windows 10 Enterprise N..."
-        Start-Sleep -s 3
-        Write-Host "Removing Existing key (if any).."
-        slmgr.vbs /upk
-        Start-Sleep -s 2
+    } elseif ($P = "Microsoft Windows 10 Enterprise Pro") {
         slmgr /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
-        Start-Sleep -s 3
-        slmgr /skms kms8.msguides.com
-        slmgr /ato
-        Start-Sleep -s 3
-        Write-Host "Activated Windows Enterprise N."
-    } else {
-    if ($P = "Microsoft Server 2019 Standard") {
-        Write-Host "Activating Windows Server 2019 Standard..."
-        Start-Sleep -s 3
-        Write-Host "Removing Existing key (if any).."
-        slmgr.vbs /upk
-        Start-Sleep -s 2
-        slmgr /ipk N69G4-B89J2-4G8F4-WWYCC-J464C
-        Start-Sleep -s 3
-        slmgr /skms kms8.msguides.com
-        slmgr /ato
-        Start-Sleep -s 3
-        Write-Host "Activated Windows Server 2019 Standard."
-    } else {
-    if ($P = "Microsoft Windows 11 Pro") {
-        Write-Host "Activating Windows 11 Pro..."
-        Start-Sleep -s 3
-        Write-Host "Removing Existing key (if any).."
-        slmgr.vbs /upk
-        Start-Sleep -s 2
-        slmgr /ipk Q269N-WFGWX-YVC9B-4J6C9-T83GX
-        Start-Sleep -s 3
-        slmgr /skms kms8.msguides.com
-        slmgr /ato
-        Start-Sleep -s 3
-        Write-Host "Activated Windows 11 Pro."
     }
-    }
-    }
-    }
-    }
-    }
-    }
-    }
-
+    Start-Sleep -s 3
+    slmgr /skms kms8.msguides.com
+    slmgr /ato
+    Write-Host Activated $P
 })
 
 $Debloat.Add_Click({
