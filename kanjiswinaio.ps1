@@ -101,7 +101,6 @@ $twitter.Font                    = New-Object System.Drawing.Font('Microsoft San
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label4,$Panel3))
 $Panel1.controls.AddRange(@($winacti,$Debloat,$twitter,$Label5))
-#$Panel2.controls.AddRange(@($taskclearer,$winacti,$Label5))
 
 $winacti.Add_Click({
     Write-Host "Removing Existing key (if any).."
