@@ -94,17 +94,9 @@ $Debloat.ForeColor               = [System.Drawing.ColorTranslator]::FromHtml("#
 $Debloat.location                = New-Object System.Drawing.Point(4,105)
 $Debloat.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
 
-$twitter                         = New-Object system.Windows.Forms.Button
-$twitter.text                    = "My Twitter"
-$twitter.width                   = 204
-$twitter.height                  = 75
-$twitter.ForeColor               = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
-$twitter.location                = New-Object System.Drawing.Point(4,535)
-$twitter.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
-
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label4,$Panel3))
-$Panel1.controls.AddRange(@($winacti,$twitter,$Debloat,$Label5))
-#$Panel2.controls.AddRange(@($taskclearer,$winacti,$twitter,$Label5))
+$Panel1.controls.AddRange(@($winacti,$Debloat,$Label5))
+#$Panel2.controls.AddRange(@($taskclearer,$winacti,$Label5))
 
 $winacti.Add_Click({
     $P = (Get-ComputerInfo).OsName
@@ -419,11 +411,6 @@ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies
     Write-Host "Showing known file extensions..."
     Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Type DWord -Value 0
 
-})
-
-$twitter.Add_Click({
-    Write-Host "Going to Kanji's Twitter."
-    Start-Process "https://twitter.com/kanjishere"
 })
 
 [void]$Form.ShowDialog()
