@@ -61,46 +61,54 @@ $Form.Icon                    = [System.Drawing.Icon]::FromHandle((New-Object Sy
 $Form.Width                   = $objImage.Width
 $Form.Height                  = $objImage.Height
 
-$Panel1                          = New-Object system.Windows.Forms.Panel
-$Panel1.height                   = 639
-$Panel1.width                    = 219
-$Panel1.location                 = New-Object System.Drawing.Point(6,54)
+$Panel1                       = New-Object system.Windows.Forms.Panel
+$Panel1.height                = 639
+$Panel1.width                 = 219
+$Panel1.location              = New-Object System.Drawing.Point(6,54)
 
-$Label3                          = New-Object system.Windows.Forms.Label
-$Label3.text                     = "System Tools"
-$Label3.AutoSize                 = $true
-$Label3.width                    = 230
-$Label3.height                   = 25
-$Label3.ForeColor                = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
-$Label3.location                 = New-Object System.Drawing.Point(15,12)
-$Label3.Font                     = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
+$Label3                       = New-Object system.Windows.Forms.Label
+$Label3.text                  = "System Tools"
+$Label3.AutoSize              = $true
+$Label3.width                 = 230
+$Label3.height                = 25
+$Label3.ForeColor             = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
+$Label3.location              = New-Object System.Drawing.Point(15,12)
+$Label3.Font                  = New-Object System.Drawing.Font('Microsoft Sans Serif',24)
 
-$winacti                       = New-Object system.Windows.Forms.Button
-$winacti.text                  = "Activate Windows"
-$winacti.width                 = 204
-$winacti.height                = 75
-$winacti.ForeColor             = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
-$winacti.location              = New-Object System.Drawing.Point(4,25)
-$winacti.Font                  = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
+$winacti                      = New-Object system.Windows.Forms.Button
+$winacti.text                 = "Activate Windows"
+$winacti.width                = 204
+$winacti.height               = 75
+$winacti.ForeColor            = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
+$winacti.location             = New-Object System.Drawing.Point(4,25)
+$winacti.Font                 = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
 
-$Debloat                         = New-Object system.Windows.Forms.Button
-$Debloat.text                    = "Debloat Windows"
-$Debloat.width                   = 204
-$Debloat.height                  = 75
-$Debloat.ForeColor               = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
-$Debloat.location                = New-Object System.Drawing.Point(4,105)
-$Debloat.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
+$Debloat                      = New-Object system.Windows.Forms.Button
+$Debloat.text                 = "Debloat Windows"
+$Debloat.width                = 204
+$Debloat.height               = 75
+$Debloat.ForeColor            = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
+$Debloat.location             = New-Object System.Drawing.Point(4,105)
+$Debloat.Font                 = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
 
-$twitter                         = New-Object system.Windows.Forms.Button
-$twitter.text                    = "My Twitter"
-$twitter.width                   = 204
-$twitter.height                  = 75
-$twitter.ForeColor               = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
-$twitter.location                = New-Object System.Drawing.Point(4,535)
-$twitter.Font                    = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
+$discord                      = New-Object system.Windows.Forms.Button
+$discord.text                 = "Discord Server"
+$discord.width                = 204
+$discord.height               = 75
+$discord.ForeColor            = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
+$discord.location             = New-Object System.Drawing.Point(4,475)
+$discord.Font                 = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
+
+$twitter                      = New-Object system.Windows.Forms.Button
+$twitter.text                 = "My Twitter"
+$twitter.width                = 204
+$twitter.height               = 75
+$twitter.ForeColor            = [System.Drawing.ColorTranslator]::FromHtml("#ffffff")
+$twitter.location             = New-Object System.Drawing.Point(4,555)
+$twitter.Font                 = New-Object System.Drawing.Font('Microsoft Sans Serif',14)
 
 $Form.controls.AddRange(@($Panel1,$Panel2,$Label3,$Label15,$Panel4,$Label4,$Panel3))
-$Panel1.controls.AddRange(@($winacti,$Debloat,$twitter,$Label5))
+$Panel1.controls.AddRange(@($winacti,$Debloat,$discord,$twitter,$Label5))
 
 $winacti.Add_Click({
     Write-Host "Removing Existing key (if any).."
@@ -294,9 +302,7 @@ $Debloat.Add_Click({
     If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer")) {
         New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Force | Out-Null
     }
-
-Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "HideSCAMeetNow" -Type DWord -Value 1
-
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "HideSCAMeetNow" -Type DWord -Value 1
     Write-Host "Removing AutoLogger file and restricting directory..."
     $autoLoggerDir = "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger"
     If (Test-Path "$autoLoggerDir\AutoLogger-Diagtrack-Listener.etl") {
@@ -312,6 +318,11 @@ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies
     Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Type DWord -Value 0
     Write-Host "Windows has been debloated. Please restart your PC to see results."
 
+})
+
+$discord.Add_Click({
+    Write-Host "Joining Kanji's Discord server..."
+    Start-Process "https://discord.gg/kanji"
 })
 
 $twitter.Add_Click({
