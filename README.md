@@ -8,6 +8,6 @@ DOES NOT WORK ON OS'S THAT HAVE A DOMAIN ADMIN (Windows 10 Education, Windows 10
 iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/Ju1La'))
 
 # Current Features
-Activate almost ALL Windows 10 Product versions
+Activate almost ALL Windows 10/11 Product versions
 
-Task Clearer - These processes that it clears are pre-definded. I will probably change these later on.
+Debloater - Remove all the un-wanted bloatware/spyware.
