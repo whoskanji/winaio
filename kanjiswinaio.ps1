@@ -13,7 +13,7 @@ Try{
 	# Check if winget is already installed
 	$er = (invoke-expression "winget -v") 2>&1
 	if ($lastexitcode) {throw $er}
-	Write-Host "Kanji's AIO Windows 10 Tool"
+	Write-Host "Kanji's AIO Windows Tool"
 }
 Catch{
 	# winget is not installed. Install it from the Github release
@@ -41,7 +41,7 @@ Finally {
 
 $Form                            = New-Object system.Windows.Forms.Form
 $Form.ClientSize                 = New-Object System.Drawing.Point(1050,700)
-$Form.text                       = "All-In-One Windows Tool by Kanji"
+$Form.text                       = "All-In-One Windows Tool by Kanji#2222"
 $Form.StartPosition              = "CenterScreen"
 $Form.TopMost                    = $false
 $Form.BackColor                  = [System.Drawing.ColorTranslator]::FromHtml("#212121")
@@ -119,6 +119,7 @@ $winacti.Add_Click({
     Write-Host Got $P
     Start-Sleep -s 2
     Write-Host Activating..
+    Write-Host 'If you are on Windows 11, it will use the same activation as Windows 10. Activation will still proceed normally.'
     if ($P = "Microsoft Windows 10 Pro") {
         slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
     } elseif ($P = "Microsoft Windows 10 Pro N") {
@@ -136,6 +137,8 @@ $winacti.Add_Click({
     slmgr /skms kms8.msguides.com
     slmgr /ato
     Write-Host Activated $P
+    Write-Host 'You may now exit to the tool or use the debloater.'
+    Write-Host "Thank you for using Kanji's AIO Windows Tool! Be sure to follow my socials below."
 })
 
 $Debloat.Add_Click({
