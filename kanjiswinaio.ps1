@@ -507,7 +507,7 @@ $START_MENU_LAYOUT = @"
 
 $discord.Add_Click({
     Write-Host "Joining Kanji's Discord server..."
-    Start-Process "https://discord.gg/kanji"
+    Start-Process "https://discord.gg/UWuKyqPQde"
 })
 
 $twitter.Add_Click({
