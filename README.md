@@ -9,4 +9,4 @@ This is an open source Windows Tool that has several tools.
 
 # Current Features
 - Activate ALL Windows 10/11 Product versions
-- Change the current Windows 10/11 Product version
+- Change the current Windows 10/11 Product version without resetting.
