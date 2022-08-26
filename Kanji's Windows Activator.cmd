@@ -1786,8 +1786,6 @@ FileStream(fo,FileMode.Create)){for(int i=0;i!=z;i++){c=b91[f[x][i]]; if(c==91)c
 : slc.dll                    SHA-1: DA1AFD97D92DD6026E7095EE7442A2144F78ED0B
 : arm64_gatherosstate.exe    SHA-1: 7E449AE5549A0D93CF65F4A1BB2AA7D1DC090D2D
 : arm64_slc.dll              SHA-1: 023D88E8E0A125F5D85EE2D999B512C4886AAB29
-:
-: https://windowsaddict.ml/readme-unreadable-codes-in-mas-aio.html
 #>
 
 :bat2file:[
