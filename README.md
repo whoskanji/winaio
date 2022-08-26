@@ -1,13 +1,12 @@
-# Kanji's PowerShell Windows AIO Tool
+# Kanji's  Windows AIO Tool
 This is an open source Windows Tool that has several tools.
 
-DOES NOT WORK ON OS'S THAT HAVE A DOMAIN ADMIN (Windows 10 Education, Windows 10 Server, etc.).
-
-
-# How to run - Run this one command in PowerShell (Admin) OR you can download the .ps1 file and run it yourself.
-iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/Ju1La'))
+# How to run
+• Download the `.cmd` file from above.
+• Run it.
+• Follow the instructions.
+• Profit.
 
 # Current Features
-Activate almost ALL Windows 10/11 Product versions
-
-Debloater - Remove all the un-wanted bloatware/spyware.
+• Activate ALL Windows 10/11 Product versions
+• Change the current Windows 10/11 Product version
